@@ -1,0 +1,4 @@
+title: Reviews
+modelClass: Mainpixel\OcReviewsPlugin\Models\Review
+toolbar:
+    buttons: reorder_toolbar

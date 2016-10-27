@@ -1,0 +1,16 @@
+plugin:
+    name: 'mainpixel.ocreviewsplugin::lang.plugin.name'
+    description: 'mainpixel.ocreviewsplugin::lang.plugin.description'
+    author: 'Job Verplanke'
+    icon: oc-icon-adn
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: MainpixelBV
+        url: mainpixel/ocreviewsplugin/reviews
+        icon: icon-apple
+        sideMenu:
+            side-menu-item:
+                label: Reviews
+                url: /
+                icon: icon-bed

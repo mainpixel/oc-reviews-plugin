@@ -1,0 +1,4 @@
+1.0.1:
+    - 'Initialize plugin.'
+    - 'Created table mainpixel_ocreviewsplugin_'
+    - builder_table_create_mainpixel_ocreviewsplugin_.php

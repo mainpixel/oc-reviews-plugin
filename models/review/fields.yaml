@@ -1,0 +1,33 @@
+fields:
+    published:
+        label: 'Publish Status'
+        span: left
+        type: switch
+    image:
+        label: 'Image Upload'
+        oc.commentPosition: ''
+        mode: image
+        imageWidth: '100'
+        imageHeight: '100'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: left
+        type: text
+    email:
+        label: Email
+        oc.commentPosition: ''
+        span: left
+        type: text
+    review:
+        label: Review
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor

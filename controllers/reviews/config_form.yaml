@@ -1,0 +1,10 @@
+name: Reviews
+form: $/mainpixel/ocreviewsplugin/models/review/fields.yaml
+modelClass: Mainpixel\OcReviewsPlugin\Models\Review
+defaultRedirect: mainpixel/ocreviewsplugin/reviews
+create:
+    redirect: 'mainpixel/ocreviewsplugin/reviews/update/:id'
+    redirectClose: mainpixel/ocreviewsplugin/reviews
+update:
+    redirect: mainpixel/ocreviewsplugin/reviews
+    redirectClose: mainpixel/ocreviewsplugin/reviews
