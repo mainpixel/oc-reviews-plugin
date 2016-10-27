@@ -1,7 +1,7 @@
 {%  set reviews = __SELF__.reviews %}
 <br />
 <br />
-
+{% scripts %}
 
 <div class="col-md-6">
 	{% for review in reviews %}
@@ -10,7 +10,7 @@
 		<div class="panel-heading">
 			<h3 class="panel-title">
 				#{{ review.id }} - {{ review.title }}
-				<span class="pull-right">{{review.created_at}}</span>
+				<span class="pull-right">{{ review.created_at }}</span>
 			</h3>
 		</div>
 		<div class="panel-body">
@@ -26,7 +26,7 @@
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-							<td>{{ html_limit(review.review, 100)|raw }} <a href="reviews/{{ review.id }}">Read more</a></td>
+							<td><div class="more">{{ review.review|raw }}</div></td>
 						</tr>
 						</tbody>
 					</table>

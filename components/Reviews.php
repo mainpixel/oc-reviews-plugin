@@ -62,8 +62,9 @@ class Reviews extends ComponentBase
     public function onRun()
     {
         //$this->property('maxItems');
-
+        $this->addJs('assets/js/script.js');
         $this->reviews = $this->loadReviews();
+
     }
 
     public function onRender() {
