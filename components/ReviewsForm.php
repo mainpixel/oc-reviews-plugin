@@ -8,90 +8,68 @@
 
 namespace Mainpixel\OcReviewsPlugin\Components;
 
-
 use Cms\Classes\ComponentBase;
 use Mainpixel\OcReviewsPlugin\Models\Review;
 use System\Models\File;
+use Input;
 use Redirect;
 use Validator;
-use ApplicationException;
-use Input;
-use Carbon\Carbon;
 
-class ReviewsForm extends ComponentBase
-{
 
-    protected $data = [];
-    protected $rules = [];
+class ReviewsForm extends ComponentBase {
 
-    public function componentDetails()
-    {
+    /**
+     * @return array
+     */
+    public function componentDetails() {
         return [
-            'name' => 'Review Form',
-            'description' => 'Frontend form for posting reviews'
+            'name'        => 'Review Form',
+            'description' => 'Frontend form for posting reviews',
         ];
     }
 
+
+    /**
+     *
+     */
     public function onRun() {
         $this->addCss('assets/css/oc-reviews.css');
     }
 
-    public function onSubmitReview()
-    {
-        $review = new Review();
+    /**
+     * @return mixed
+     */
+    public function onSubmitReview() {
+        // 1. Validate user input.
+        $validator = Validator::make(Input::all(), [
+            'title'        => 'required',
+            'email'        => 'required|email',
+            'review'       => 'required',
+            'image_upload' => 'required|image',
+        ]);
 
-        $this->rules = [
-            'title' => 'required',
-            'email' => 'required|email',
-            'review' => 'required'
-        ];
-
-        $this->data = [
-            'title' => Input::get('title'),
-            'email' => Input::get('email'),
-            'review' => Input::get('review'),
-        ];
-
-        //$data['title'] = post('title');
-        //$data['email'] = post('email');
-        //$data['body'] = post('review');
-        //$data['published'] = post('published');
-        //$created_at = post(Carbon::now('Y-m-d H:i:s'));
-
-        //$data['published'] = Input::get('published');
-
-
-        $validator = Validator::make($this->data, $this->rules);
-
-
-        if ($validator->fails())
-        {
-            //$messages = $validator->messages();
-            if (Input::file('image_upload')) {
-                return Redirect::back()->withErrors($validator);
-            }
-
+        // 2. If validation fails.
+        if ( $validator->fails() ) {
+            return Redirect::back()->withErrors($validator)->withInput(post());
         } else {
 
+            $review = new Review();
 
+            // 3.2 Store image into DB.
             $image = new File;
             $image->data = Input::file('image_upload');
             $image->save();
 
-            // Attach the uploaded file to the model
-            //$review->image()->add($image);
-
+            // 3.3 Store review data.
             $review->title = Input::get('title');
             $review->email = Input::get('email');
             $review->review = Input::get('review');
             $review->published = Input::get('published');
-            //$review->created_at = $created_at;
             $review->image = $image;
             $review->save();
 
+            // 3.4 Return back to latest (upload/create) view.
             return Redirect::back();
         }
-
-
     }
 }

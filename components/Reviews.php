@@ -15,6 +15,9 @@ class Reviews extends ComponentBase
 {
     public $reviews;
 
+    /**
+     * @return array
+     */
     public function componentDetails()
     {
         return [
@@ -23,6 +26,9 @@ class Reviews extends ComponentBase
         ];
     }
 
+    /**
+     * @return array
+     */
     public function defineProperties()
     {
         return [
@@ -52,6 +58,9 @@ class Reviews extends ComponentBase
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getSortOrderOptions() {
         return [
             'date asc'  => 'Date (ASC)',
@@ -59,19 +68,24 @@ class Reviews extends ComponentBase
         ];
     }
 
+    /**
+     *
+     */
     public function onRun()
     {
-        //$this->property('maxItems');
-        $this->addJs('assets/js/script.js');
         $this->reviews = $this->loadReviews();
-
     }
 
+    /**
+     *
+     */
     public function onRender() {
         $this->property('maxItems');
     }
 
-
+    /**
+     * @return mixed
+     */
     protected function loadReviews()
     {
         // 1. Define review model class
