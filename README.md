@@ -9,7 +9,6 @@ So it's possible to have the components seperated and on multiple pages.
 The admin must approve the posted review in the backend, before actualy it on the frontend.
 =======
 The admin has to aprove the posted review, in the backend, before actualy seeing the review on the frontend.
->>>>>>> 72e4cea1dde63fc9077944fc23fd89499d6f6795
 
 
 - **maxItems:** The amount of max shown items.
@@ -34,7 +33,7 @@ Login to the backend and drag/add the plugin to the page. Make sure that the cod
 {% component 'reviewsform' %}
 ```
 
-<<<<<<< HEAD
+
 If you'r not seeing the review after a post. Make sure to approve the review when logged in at the backend.
 
 ## Customize
@@ -52,4 +51,3 @@ Drag/add the component to the page, click on the white "component" text and the 
 ## Customize
 It is possible to customize the form aswell as the view list. 
 Drag/add the component to the page, click on the white "component" text and the template will appear in the editor. 
->>>>>>> 72e4cea1dde63fc9077944fc23fd89499d6f6795
