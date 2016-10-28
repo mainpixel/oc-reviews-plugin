@@ -7,11 +7,20 @@ The form component hold the form for submiting a review.
 So it's possible to have the components seperated and on multiple pages.
 The admin has to aprove the posted review, in the backend, before actualy seeing the review on the frontend.
 
-All the styling is done with [Bootstrap](http://getbootstrap.com/getting-started/#download-cdn). Make sure that it is added to the page!
 
 - **maxItems:** The amount of max shown items.
 - **sortOrder:** Sorting is done by date (asc or desc)
 - **notFoundMessage:** If there no results, the message that is displayed in the backend.
+
+
+## Requirements
+All the styling is done with [Bootstrap](http://getbootstrap.com/getting-started/#download-cdn). Make sure that it is added to the page!All the styling is done with [Bootstrap](http://getbootstrap.com/getting-started/#download-cdn). Make sure that it is added to the page!
+
+Make sure to add the
+```
+{% scripts %}
+```
+tag to the page aswell, otherwise the CSS, that comes with the plugin, will not be loaded.
 
 
 ## Usage
@@ -20,98 +29,7 @@ Login to the backend and drag/add the plugin to the page. Make sure that the cod
 {% component 'reviews' %}
 {% component 'reviewsform' %}
 ```
-Make sure to add the
-```
-{% scripts %}
-```
-tag to the page aswell, otherwise the CSS, that comes with the plugin, will not be loaded.
-
 
 ## Customize
 It is possible to customize the form aswell as the view list. 
 Drag/add the component to the page, click on the white "component" text and the template will appear in the editor. 
-
-### List Template
-``` HTML
-{%  set reviews = __SELF__.reviews %}
-
-<div class="col-md-6">
-	{% for review in reviews %}
-	{% if review.published == 1 %}
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title">
-				#{{ review.id }} - {{ review.title }}
-				<span class="pull-right">{{ review.created_at }}</span>
-			</h3>
-		</div>
-		<div class="panel-body">
-			<div class="row">
-				<div class="col-md-9">
-					<table>
-						<tbody>
-						<tr>
-							<td><b>{{ review.title }} - {{ review.email }}</b></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<td><div class="more">{{ review.review|raw }}</div></td>
-						</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="col-md-3" align="center">
-					<img alt="{{ review.title }}" src="{{ review.image.thumb(150, 150, {'mode':'crop'}) }}" class="img-thumbnail img-responsive">
-				</div>
-			</div>
-		</div>
-	</div>
-	{% endif %}
-	{% endfor %}
-</div>
-```
-
-### Form Template
-``` HTML
-<div class="col-md-6">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title">Plugin Form for frontend</h3>
-		</div>
-		<div class="panel-body">
-			<p>This "Form" is shown by adding the component to the page in the backend. Submitting this form will post data to the database and can be viewed by the admin.</p>
-			<p>The items must be confirmed by the admin before the can be displayed in the list on the left.</p>
-			
-			<br />
-			{{ errors.first('title', '<div class="alert alert-warning oc-alert-custom">Title field is required.</div>')|raw }}
-			{{ errors.first('email', '<div class="alert alert-warning oc-alert-custom">Email field is required.</div>')|raw }}
-			{{ errors.first('review', '<div class="alert alert-warning oc-alert-custom">Review field is required.</div>')|raw }}
-			{{ errors.first('image_upload', '<div class="alert alert-warning oc-alert-custom">Image field is required.</div>')|raw }}
-			
-			{{ form_open({ request: 'onSubmitReview', files: true }) }}
-				<input name="published" value="0" type="hidden">
-				<div class="form-group">
-					<label for="labelTitle">Title</label>
-					<input name="title" type="text" class="form-control" id="labelTitle" value="{{form_value('title')}}" placeholder="Title">
-				</div>
-				<div class="form-group">
-					<label for="labelEmail">Email</label>
-					<input name="email" type="email" class="form-control" id="labelEmail" value="{{form_value('email')}}" placeholder="Email Address">
-				</div>
-				<div class="form-group">
-					<label for="labelReview">Review</label>
-					<textarea name="review" class="form-control" rows="3" id="labelReview" value="{{form_value('review')}}" placeholder="Some content..."></textarea>
-				</div>
-				<div class="form-group">
-					<label for="labelUpload">Upload Image</label>
-					<input name="image_upload" type="file">
-				</div>
-				<button class="btn btn-primary" id="test">Submit Review</button>
-			</form>
-		</div>
-	</div>
-</div>
-```
