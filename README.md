@@ -3,9 +3,9 @@ Reviews plugin for OctoberCMS, with admin management. The plugin comes with two 
 The list component hold a few options. You can sort the list by date, the max amount items and a "not found" message.
 The admin has to aprove the posted review, in the backend, before actualy seeing the review on the frontend.
 
-**maxItems:** The amount of max shown items.
-**sortOrder:** Sorting is done by date (asc or desc)
-**notFoundMessage:** If there no results, the message that is displayed in the backend.
+- **maxItems:** The amount of max shown items.
+- **sortOrder:** Sorting is done by date (asc or desc)
+- **notFoundMessage:** If there no results, the message that is displayed in the backend.
 
 ## Installation
 Login to the backend and add the plugin to the page. Make sure that the code is added to the editor below, if not, add this
