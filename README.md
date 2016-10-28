@@ -45,8 +45,3 @@ Drag/add the component to the page, click on the white "component" text and the 
 - Add Bootstrap to default plugin load
 - Change the default upload folder to custom upload folder.
 - Add Dutch language support
-
-
-## Customize
-It is possible to customize the form aswell as the view list. 
-Drag/add the component to the page, click on the white "component" text and the template will appear in the editor. 
