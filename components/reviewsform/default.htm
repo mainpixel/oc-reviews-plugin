@@ -15,7 +15,7 @@
 			{{ errors.first('review', '<div class="alert alert-warning oc-alert-custom">Review field is required.</div>')|raw }}
 			{{ errors.first('image_upload', '<div class="alert alert-warning oc-alert-custom">Image field is required.</div>')|raw }}
 			
-			{{ form_open({ request: 'onSubmitReview', files: true }) }}
+			{{ form_open( { request: 'onSubmitReview', files: true, } ) }}
 				<input name="published" value="0" type="hidden">
 				<div class="form-group">
 					<label for="labelTitle">Title</label>

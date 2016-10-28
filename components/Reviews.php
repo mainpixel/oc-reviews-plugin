@@ -42,14 +42,14 @@ class Reviews extends ComponentBase
 
             'sortOrder' => [
                 'title'       => 'Sort Order',
-                'description' => 'Sorting order',
+                'description' => 'Sorting order by date',
                 'type'        => 'dropdown',
                 'default'     => 'date desc',
             ],
 
             'notFoundMessage' => [
                 'title'             => 'Not found message',
-                'description'       => 'Shown when its not found',
+                'description'       => 'Message when its not found',
                 'type'              => 'string',
                 'default'           => '',
                 'showExternalParam' => false,
@@ -62,8 +62,8 @@ class Reviews extends ComponentBase
      */
     public function getSortOrderOptions() {
         return [
-            'date asc'  => 'Date (ASC)',
-            'date desc' => 'Date (DESC)'
+            'date asc'  => 'Oldest on top',
+            'date desc' => 'Newest on top'
         ];
     }
 
@@ -72,16 +72,7 @@ class Reviews extends ComponentBase
      */
     public function onRun()
     {
-        $this->property('maxItems');
         $this->reviews = $this->loadReviews();
-    }
-
-    /**
-     *
-     */
-    public function onRender() {
-        $this->property('maxItems');
-        //$this->reviews = $this->loadReviews();
     }
 
     /**
@@ -90,15 +81,21 @@ class Reviews extends ComponentBase
     protected function loadReviews()
     {
         // 1. Define review model class
-        $query = new Review();
+        $query = Review::all();
 
         // 2. Execute a query based on sorting.
         if ( $this->property('sortOrder') == 'date desc' ) {
-            return $query->orderBy('created_at','desc')->take($this->property('maxItems'))->get();
+            $query = $query->sortByDesc('created_at');
         }
 
         if ( $this->property('sortOrder') == 'date asc' ) {
-            return $query->orderBy('created_at', 'asc')->take($this->property('maxItems'))->get();
+            $query = $query->sortBy('created_at');
         }
+
+        if ( $this->property('maxItems') > 0 ) {
+            $query = $query->take($this->property('maxItems'));
+        }
+
+        return $query;
     }
 }

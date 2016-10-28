@@ -14,6 +14,7 @@ use System\Models\File;
 use Input;
 use Redirect;
 use Validator;
+use Flash;
 
 
 class ReviewsForm extends ComponentBase {
@@ -51,6 +52,8 @@ class ReviewsForm extends ComponentBase {
         if ( $validator->fails() ) {
             return Redirect::back()->withErrors($validator)->withInput(post());
         } else {
+
+            Flash::success('Success');
 
             $review = new Review();
 
