@@ -5,10 +5,8 @@ The list component hold a few options, that are shown below.
 The form component hold the form for submiting a review. 
 
 So it's possible to have the components seperated and on multiple pages.
-<<<<<<< HEAD
+
 The admin must approve the posted review in the backend, before actualy it on the frontend.
-=======
-The admin has to aprove the posted review, in the backend, before actualy seeing the review on the frontend.
 
 
 - **maxItems:** The amount of max shown items.
@@ -47,7 +45,8 @@ Drag/add the component to the page, click on the white "component" text and the 
 - Add Bootstrap to default plugin load
 - Change the default upload folder to custom upload folder.
 - Add Dutch language support
-=======
+
+
 ## Customize
 It is possible to customize the form aswell as the view list. 
 Drag/add the component to the page, click on the white "component" text and the template will appear in the editor. 
