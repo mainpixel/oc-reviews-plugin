@@ -35,8 +35,7 @@ class Reviews extends ComponentBase
             'maxItems' => [
                 'title'             => 'Max items',
                 'description'       => 'The amount of max. items that are loaded',
-                'default'           => 2, // The default amount of loaded items
-                // 'type' => 'string',
+                'default'           => 0,
                 'validationPattern' => '^[0-9]+$',
                 'validationMessage' => 'Only numbers are valid!',
             ],
@@ -73,6 +72,7 @@ class Reviews extends ComponentBase
      */
     public function onRun()
     {
+        $this->property('maxItems');
         $this->reviews = $this->loadReviews();
     }
 
@@ -81,6 +81,7 @@ class Reviews extends ComponentBase
      */
     public function onRender() {
         $this->property('maxItems');
+        //$this->reviews = $this->loadReviews();
     }
 
     /**
@@ -93,15 +94,11 @@ class Reviews extends ComponentBase
 
         // 2. Execute a query based on sorting.
         if ( $this->property('sortOrder') == 'date desc' ) {
-            return $query->orderBy('created_at','desc')->get();
+            return $query->orderBy('created_at','desc')->take($this->property('maxItems'))->get();
         }
 
         if ( $this->property('sortOrder') == 'date asc' ) {
-            return $query->orderBy('created_at', 'asc')->get();
-        }
-
-        if ( $this->property('maxItems') > 0 ) {
-            return $query->take($this->property('maxItems'))->get();
+            return $query->orderBy('created_at', 'asc')->take($this->property('maxItems'))->get();
         }
     }
 }
