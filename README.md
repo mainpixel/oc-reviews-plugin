@@ -14,7 +14,7 @@ The admin has to aprove the posted review, in the backend, before actualy seeing
 
 
 ## Requirements
-All the styling is done with [Bootstrap](http://getbootstrap.com/getting-started/#download-cdn). Make sure that it is added to the page!All the styling is done with [Bootstrap](http://getbootstrap.com/getting-started/#download-cdn). Make sure that it is added to the page!
+All the styling is done with [Bootstrap](http://getbootstrap.com/getting-started/#download-cdn). Make sure that it is added to the page!
 
 Make sure to add the
 ```
