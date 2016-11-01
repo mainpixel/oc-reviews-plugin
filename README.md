@@ -46,3 +46,4 @@ Drag/add the component to the page, click on the white "component" text and the 
 - Change the default upload folder to custom upload folder.
 - Add Dutch language support
 - Fix "not found message"
+- Add user permissions
