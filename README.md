@@ -47,3 +47,4 @@ Drag/add the component to the page, click on the white "component" text and the 
 - Add Dutch language support
 - Fix "not found message"
 - Add user permissions
+- Lightbox for fullscreen view of review image. Enable or disable option
