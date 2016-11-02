@@ -1,5 +1,7 @@
 <?php namespace Mainpixel\OcReviewsPlugin;
 
+
+use Backend;
 use System\Classes\PluginBase;
 
 class Plugin extends PluginBase
@@ -14,5 +16,17 @@ class Plugin extends PluginBase
 
     public function registerSettings()
     {
+    }
+
+
+    public function registerNavigation()
+    {
+        return [
+            'Main' => [
+                'label' => 'Main',
+                'url' => Backend::url('mainpixel/index'),
+                'icon' => ''
+            ]
+        ];
     }
 }

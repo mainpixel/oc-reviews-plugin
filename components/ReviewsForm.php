@@ -6,6 +6,7 @@
  * Time: 13:30
  */
 
+
 namespace Mainpixel\OcReviewsPlugin\Components;
 
 use Cms\Classes\ComponentBase;

@@ -3,14 +3,14 @@ plugin:
     description: 'mainpixel.ocreviewsplugin::lang.plugin.description'
     author: 'Job Verplanke'
     icon: oc-icon-adn
-    homepage: ''
+    homepage: 'https://www.mainpixel.io/en/contact-mainpixel/sales'
 navigation:
     main-menu-item:
-        label: MainpixelBV
+        label: Test
         url: mainpixel/ocreviewsplugin/reviews
         icon: icon-apple
         sideMenu:
             side-menu-item:
                 label: Reviews
-                url: /
+                url:
                 icon: icon-bed
