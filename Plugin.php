@@ -19,14 +19,5 @@ class Plugin extends PluginBase
     }
 
 
-    public function registerNavigation()
-    {
-        return [
-            'Main' => [
-                'label' => 'Main',
-                'url' => Backend::url('mainpixel/index'),
-                'icon' => ''
-            ]
-        ];
-    }
+
 }

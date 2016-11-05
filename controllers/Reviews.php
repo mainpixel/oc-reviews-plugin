@@ -16,4 +16,5 @@ class Reviews extends Controller
         parent::__construct();
         BackendMenu::setContext('Mainpixel.OcReviewsPlugin', 'main-menu-item');
     }
+
 }
